@@ -17,7 +17,10 @@
         "incremental": true,
         "resolveJsonModule": true,
         "paths": {
-            "@src/*": ["./src/*"]
+            "@src/*": ["./src/*"],
+            "@config": ["./src/config"],
+            "@domains": ["./src/domains/*"],
+            "@shared": ["./src/shared/*"]
         }
     }
 }
