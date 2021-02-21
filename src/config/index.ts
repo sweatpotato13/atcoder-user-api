@@ -6,9 +6,9 @@ _config({ path: __dirname + "/../../.env" });
 export const config = {
     isProduction: process.env.NODE_ENV === "production",
 
-    appName: process.env.APP_NAME || "github-profile-psbadge",
-    appTitle: process.env.APP_TITLE || "github-profile-psbadge",
-    appDescription: process.env.APP_DESCRIPTION || "github-profile-psbadge",
+    appName: process.env.APP_NAME || "api",
+    appTitle: process.env.APP_TITLE || "api",
+    appDescription: process.env.APP_DESCRIPTION || "api",
     apiVersion: process.env.API_VERSION || "1.0",
 
     host: process.env.HOST || "0.0.0.0",
