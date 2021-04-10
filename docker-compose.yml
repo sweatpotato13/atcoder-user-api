@@ -1,0 +1,26 @@
+services:
+    mongo:
+        image: mongo
+        restart: always
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USER}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
+        ports:
+        - 27017:27017
+    mongo-express:
+        image: mongo-express
+        restart: always
+        environment:
+            ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGODB_USER}
+            ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_PASSWORD}
+        ports:
+        - 8081:8081
+    nest:
+        container_name: nest
+        depends_on:
+            - mongo
+        build:
+            dockerfile: Dockerfile
+            context: ./
+        ports:
+            - ${PORT}:${PORT}

@@ -17,4 +17,14 @@ export const config = {
     hasuraEndPoint: process.env.HASURA_ENDPOINT || "0.0.0.0",
     hasuraPort: parseInt(process.env.HASURA_PORT) || 8000,
     hasuraAdminSecret: process.env.HASURA_ADMINSECRET || "adminsecret",
+    // Logger
+    mongodbUser: process.env.MONGODB_USER || "",
+    mongodbPassword: process.env.MONGODB_PASSWORD || "",
+    mongodbHost: process.env.MONGODB_HOST || "",
+    mongodbPort: process.env.MONGODB_PORT || "",
 };
+
+import LoggerModuleConfig from "./modules/logger";
+
+export { LoggerModuleConfig };
+
