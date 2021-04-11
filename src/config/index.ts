@@ -22,6 +22,15 @@ export const config = {
     mongodbPassword: process.env.MONGODB_PASSWORD || "",
     mongodbHost: process.env.MONGODB_HOST || "",
     mongodbPort: process.env.MONGODB_PORT || "",
+
+    postgres_host: process.env.POSTGRES_HOST || "postgres",
+    postgres_port: parseInt(process.env.POSTGRES_PORT) || 5432,
+    postgres_password: process.env.POSTGRES_PASSWORD || "postgres",
+    postgres_db: process.env.POSTGRES_DB || "postgres",
+    postgres_volume: process.env.POSTGRES_VOLUME || "pgdata",
+    postgres_table: process.env.POSTGRES_TABLE || "public.userinfo",
+    postgres_ip: process.env.POSTGRES_IP || "0.0.0.0",
+
 };
 
 import LoggerModuleConfig from "./modules/logger";

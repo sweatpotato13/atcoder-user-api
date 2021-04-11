@@ -37,4 +37,4 @@ postgres
 .key
 .env
 
-client/Status.json
+migrations
