@@ -12,24 +12,20 @@ export const config = {
     apiVersion: process.env.API_VERSION || "1.0",
 
     host: process.env.HOST || "0.0.0.0",
-    port: parseInt(process.env.PORT) || 3000,
+    port: parseInt(process.env.PORT) || 5000,
 
-    hasuraEndPoint: process.env.HASURA_ENDPOINT || "0.0.0.0",
-    hasuraPort: parseInt(process.env.HASURA_PORT) || 8000,
-    hasuraAdminSecret: process.env.HASURA_ADMINSECRET || "adminsecret",
     // Logger
-    mongodbUser: process.env.MONGODB_USER || "",
-    mongodbPassword: process.env.MONGODB_PASSWORD || "",
-    mongodbHost: process.env.MONGODB_HOST || "",
-    mongodbPort: process.env.MONGODB_PORT || "",
+    mongodbUser: process.env.MONGODB_USER || "mongo",
+    mongodbPassword: process.env.MONGODB_PASSWORD || "mongologger",
+    mongodbHost: process.env.MONGODB_HOST || "mongo",
+    mongodbPort: parseInt(process.env.POSTGRES_PORT) || 27017,
 
     postgres_host: process.env.POSTGRES_HOST || "postgres",
     postgres_port: parseInt(process.env.POSTGRES_PORT) || 5432,
     postgres_password: process.env.POSTGRES_PASSWORD || "postgres",
     postgres_db: process.env.POSTGRES_DB || "postgres",
     postgres_volume: process.env.POSTGRES_VOLUME || "pgdata",
-    postgres_table: process.env.POSTGRES_TABLE || "public.userinfo",
-    postgres_ip: process.env.POSTGRES_IP || "0.0.0.0",
+    postgres_ip: process.env.POSTGRES_IP || "host.docker.internal",
 
 };
 

@@ -10,7 +10,7 @@ export class UserInfoService {
     constructor(private readonly userInfoManager: UserInfoAggregate,
         private readonly _logger: LoggerService) { }
 
-    @Cron('55 4 * * *')
+    @Cron('0 */2 * * *')
     public async getUserInfo(): Promise<any> {
         let number = 1;
         let pageid = 1;
@@ -56,6 +56,9 @@ export class UserInfoService {
                 });
                 pageid += 1;
             }
+            this._logger.info("info", {
+                context: `Finish parsing`
+            });
         } catch(err){
             this._logger.error("error", {
                 context: `Failed to parse ranking ${number} : ${err.message}`
