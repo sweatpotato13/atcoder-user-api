@@ -1,51 +1,33 @@
 import { Injectable } from "@nestjs/common";
-import { config } from "@src/config";
-import fetch from "node-fetch";
+import { InjectRepository } from "@nestjs/typeorm";
+import { User } from "@src/entities/userinfo.entity";
+import { LoggerService } from "@src/shared/modules/logger/logger.service";
+import { Repository } from "typeorm";
 
 @Injectable()
 export class AtcoderAggregate {
+    constructor(
+        @InjectRepository(User) private userRepository: Repository<User>,
+        private readonly _logger: LoggerService,
+    ) {
+        this.userRepository = userRepository;
+    }
+    /**
+    * 특정 유저 조회
+    * @param id
+    */
+    findOne(user: string): Promise<User> {
+        return this.userRepository.findOne({ user: user });
+    }
+
     async getUserInfo(handle: string): Promise<string> {
-        const operation = `
-        query MyQuery {
-          userinfo(where: {user: {_eq: "${handle}"}}) {
-            birth
-            highest
-            match
-            rank
-            rating
-            user
-            win
-          }
+        try{
+            const info = await this.findOne(handle);
+            return JSON.stringify(info);    
+        } catch(err){
+            this._logger.error("error", {
+                context: `Failed to getUserinfo ${handle} : ${err.message}`
+            });    
         }
-      `;
-        return this.fetchMyQuery(operation)
-            .then(({ data, errors }) => {
-                if (errors) {
-                    console.error(errors);
-                }
-                return data;
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-    async fetchGraphQL(operationsDoc: string, operationName: string) {
-        return fetch(
-            `http://${config.hasuraEndPoint}:${config.hasuraPort}/v1/graphql`,
-            {
-                method: "POST",
-                body: JSON.stringify({
-                    query: operationsDoc,
-                    operationName,
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-hasura-admin-secret": config.hasuraAdminSecret,
-                },
-            }
-        ).then(result => result.json());
-    }
-    async fetchMyQuery(operation: string) {
-        return this.fetchGraphQL(operation, "MyQuery");
     }
 }
