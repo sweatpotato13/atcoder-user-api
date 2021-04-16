@@ -29,18 +29,7 @@ module.exports = {
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-empty-function": "off",
         "simple-import-sort/imports": "error",
-        "simple-import-sort/exports": "error",
-        "@typescript-eslint/naming-convention": [
-            "error",
-            {
-                "selector": "variableLike",
-                "format": ["strictCamelCase", "UPPER_CASE"]
-            },
-            {
-                "selector": "typeLike",
-                "format": ["PascalCase"]
-            }
-        ]
+        "simple-import-sort/exports": "error"
     },
     settings: {
         "import/resolver": {

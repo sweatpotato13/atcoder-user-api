@@ -89,7 +89,11 @@
       "js"
     ],
     "moduleNameMapper": {
-      "^@src/(.*)$": "<rootDir>/src/$1"
+      "^@src/(.*)$": "<rootDir>/src/$1",
+      "^@common/(.*)$": "<rootDir>/src/common/$1",
+      "^@config": "<rootDir>/src/config",
+      "^@domains/(.*)$": "<rootDir>/src/domains/$1",
+      "^@shared/(.*)$": "<rootDir>/src/shared/$1"
     }
   }
 }

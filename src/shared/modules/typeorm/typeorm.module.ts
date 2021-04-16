@@ -1,6 +1,6 @@
+import { config } from "@config";
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { config } from "@config";
 import { User } from '@src/entities/userinfo.entity';
 
 @Module({
