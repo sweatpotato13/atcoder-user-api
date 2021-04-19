@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
-import { UserInfoAggregate } from '../domainModel/aggregate/userinfo.aggregate';
-import scraper from "table-scraper";
 import { User } from '@src/entities/userinfo.entity';
 import { LoggerService } from '@src/shared/modules/logger/logger.service';
+import scraper from "table-scraper";
+
+import { UserInfoAggregate } from '../domainModel/aggregate/userinfo.aggregate';
 
 @Injectable()
 export class UserInfoService {
