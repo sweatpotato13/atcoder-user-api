@@ -55,4 +55,4 @@ services:
             dockerfile: Dockerfile
             context: ./
         ports:
-            - ${PORT}:8000
+            - ${PORT}:${PORT}
