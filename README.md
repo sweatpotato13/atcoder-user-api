@@ -1,23 +1,15 @@
-# AtCoderUserInfoDB
+# AtCoderUserInfoAPI
 
-Parse Atcoder UserInfo Database 
+Atcoder UserInfo API 
 
 ## Environment
 * Docker
 
 ## Usage
 ```
-yarn build
 docker-compose up -d
 ```
 
-## Table
-| Name 	| Type 	| Description 	|
-|-	|-	|-	|
-| rank 	| integer	|  	|
-| user 	| text 	|  	|
-| birth 	|  integer	|  	|
-| rating 	|  integer	|  	|
-| highest 	|  integer	|  	|
-| match 	| integer 	|  	|
-| win 	| integer 	|  	|
+```
+http://localhost:8000/user/CuteWisp
+```
