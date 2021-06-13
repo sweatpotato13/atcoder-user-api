@@ -16,6 +16,7 @@ services:
     mongo:
         image: mongo
         container_name: mongo
+        restart: always
         environment:
             MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USER}
             MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PW}
@@ -24,6 +25,7 @@ services:
     mongo-express:
         image: mongo-express
         container_name: mongo-express
+        restart: always
         environment:
             ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGODB_USER}
             ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_PW}
@@ -39,7 +41,7 @@ services:
             - postgres
         restart: always
         environment:
-          HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:5432/${POSTGRES_DB}
+          HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:5432/${POSTGRES_DB}
           HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
           HASURA_GRAPHQL_DEV_MODE: "true"
           HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
