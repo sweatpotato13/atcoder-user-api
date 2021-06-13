@@ -1,22 +1,23 @@
 import {
     ArgumentsHost,
+    BadRequestException,
     Catch,
-    ExceptionFilter,
-    HttpException
+    ExceptionFilter
 } from "@nestjs/common";
 
-@Catch(HttpException)
-export class HttpExceptionFilter implements ExceptionFilter<HttpException> {
-    catch(exception: HttpException, host: ArgumentsHost) {
+@Catch(BadRequestException)
+export class BadRequestExceptionFilter
+    implements ExceptionFilter<BadRequestException>
+{
+    catch(exception: BadRequestException, host: ArgumentsHost) {
         const ctx = host.switchToHttp();
         const response = ctx.getResponse();
-        const request = ctx.getRequest();
         const statusCode = exception.getStatus();
 
         response.status(statusCode).json({
             statusCode,
             timestamp: new Date().toISOString(),
-            path: request.url
+            message: "Parameter validation failed"
         });
     }
 }

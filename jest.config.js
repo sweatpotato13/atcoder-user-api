@@ -20,7 +20,7 @@ module.exports = {
     },
     coverageDirectory: "./coverage",
     moduleNameMapper: pathsToModuleNameMapper(paths, {
-        prefix: "<rootDir>"
+        prefix: "<rootDir>/src/"
     }),
     clearMocks: true,
     maxWorkers: 1
