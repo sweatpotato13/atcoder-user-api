@@ -1,11 +1,10 @@
 import { MiddlewareConsumer, Module } from "@nestjs/common";
-import { CqrsModule, QueryHandler } from "@nestjs/cqrs";
+import { CqrsModule } from "@nestjs/cqrs";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UserRepository } from "@src/shared/repositories/user.repository";
 import { LoggerService } from "@src/shared/services";
 import { UserController } from "./app/user.controller";
 import { UserService } from "./app/user.service";
-import { CommandHandlers } from "./domain/commands/handlers";
 import { QueryHandlers } from "./domain/queries/handlers";
 
 @Module({
@@ -17,7 +16,6 @@ import { QueryHandlers } from "./domain/queries/handlers";
     providers: [
         { provide: "UserService", useClass: UserService },
         LoggerService,
-        ...CommandHandlers,
         ...QueryHandlers
     ],
     controllers: [UserController]

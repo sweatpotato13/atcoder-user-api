@@ -1,6 +1,5 @@
 // Response Types
 export enum ResponseTypes {
-    WRITE_RESPONSE = "WriteResponse",
     ERROR_RESPONSE = "ErrorResponse"
 }
 
