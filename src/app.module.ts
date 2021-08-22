@@ -1,22 +1,12 @@
 import { Module } from "@nestjs/common";
 import { APP_FILTER, APP_INTERCEPTOR } from "@nestjs/core";
 import { LoggingInterceptor } from "@common/interceptors/logging.interceptor";
-import { ConfigModule } from "@nestjs/config";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { TypeOrmConfigService } from "@src/common/typeorm/typeorm.config.service";
-import { Connection } from "typeorm";
-import { TypeOrmModuleConfig } from "@config";
 import { UserModule } from "./modules/user/user.module";
 import { BadRequestExceptionFilter } from "./common/filters/bad-request-exception.filter";
 import { ScheduleModule } from "@nestjs/schedule";
 
 @Module({
     imports: [
-        TypeOrmModule.forRootAsync({
-            imports: [ConfigModule.forFeature(TypeOrmModuleConfig)],
-            useClass: TypeOrmConfigService
-        }),
-        /** ------------------ */
         UserModule,
         ScheduleModule.forRoot()
     ],
@@ -33,5 +23,5 @@ import { ScheduleModule } from "@nestjs/schedule";
     ]
 })
 export class AppModule {
-    constructor(private connection: Connection) {}
+    constructor() {}
 }

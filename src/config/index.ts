@@ -3,10 +3,9 @@ import { config as _config } from "dotenv";
 _config({ path: __dirname + "/../../.env" });
 (process as any).send = process.send || function () {};
 
-import TypeOrmModuleConfig from "./modules/typeorm";
 import { loggerConfig } from "./modules/logger";
 
-export { TypeOrmModuleConfig, loggerConfig };
+export { loggerConfig };
 
 export const config = {
     // Base
@@ -18,5 +17,7 @@ export const config = {
     // Server
     host: process.env.HOST || "0.0.0.0",
     port: parseInt(process.env.PORT) || 8000,
-    rateLimitMax: process.env.RATE_LIMIT_MAX || 10000
+    rateLimitMax: process.env.RATE_LIMIT_MAX || 10000,
+    // GRAPHQL
+    graphqlEndpoint: process.env.GRAPHQL_ENDPOINT || "https://graphqlendpoint.com/v1/graphql",
 };
