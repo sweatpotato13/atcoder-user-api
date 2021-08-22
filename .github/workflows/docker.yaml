@@ -7,11 +7,9 @@ on:
       - 'dev'
     tags:
       - '**'
-  pull_request:
 
 jobs:
   build:
-    if: (github.event_name == 'push' || github.actor != 'dependabot[bot]')
     runs-on: ubuntu-latest
     steps:
       -
