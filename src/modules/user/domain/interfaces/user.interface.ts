@@ -1,5 +1,5 @@
-import { User } from "@src/common/entities";
+import { IUser } from "@src/common/entities/interfaces/user.interface";
 
 export interface IUserService {
-    getUserInfo(data: string): Promise<User>;
+    getUserInfo(data: string): Promise<IUser>;
 }

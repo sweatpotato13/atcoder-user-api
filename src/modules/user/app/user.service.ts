@@ -1,30 +1,19 @@
 import { Injectable } from "@nestjs/common";
 import { QueryBus } from "@nestjs/cqrs";
-import {
-    runOnTransactionCommit,
-    runOnTransactionRollback,
-    runOnTransactionComplete,
-    Transactional
-} from "typeorm-transactional-cls-hooked";
+import { IUser } from "@src/common/entities/interfaces/user.interface";
 import { IUserService } from "../domain/interfaces/user.interface";
 import { GetUserQuery } from "../domain/queries/impl/get-user.command";
-import { User } from "@src/common/entities";
 
 @Injectable()
 export class UserService implements IUserService {
-    constructor(private readonly _queryBus: QueryBus) {}
+    constructor(private readonly _queryBus: QueryBus) { }
 
-    @Transactional()
-    public async getUserInfo(data: string): Promise<User> {
+    public async getUserInfo(data: string): Promise<IUser> {
         try {
             const ret = await this._queryBus.execute(new GetUserQuery(data));
-            runOnTransactionCommit(() => {});
             return ret;
         } catch (error) {
-            runOnTransactionRollback(() => {});
             throw error;
-        } finally {
-            runOnTransactionComplete(() => {});
         }
     }
 }
