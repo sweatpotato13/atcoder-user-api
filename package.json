@@ -69,7 +69,7 @@
         "rimraf": "^3.0.2",
         "rxjs": "^7.1.0",
         "table-scraper": "^1.0.3",
-        "tsconfig-paths": "^3.9.0",
+        "tsconfig-paths": "^3.11.0",
         "typedi": "^0.10.0",
         "winston": "^3.3.3",
         "winston-mongodb": "^5.0.7"
