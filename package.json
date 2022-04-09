@@ -58,7 +58,7 @@
         "express-rate-limit": "^5.5.1",
         "graphql": "^15.6.0",
         "helmet": "^4.6.0",
-        "moment": "^2.29.1",
+        "moment": "^2.29.2",
         "morgan": "^1.10.0",
         "nest-winston": "^1.6.0",
         "node-eventstore-client": "^0.2.18",
