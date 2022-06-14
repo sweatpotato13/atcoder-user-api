@@ -2,18 +2,22 @@ import { config } from "@config";
 import fetch from "node-fetch"
 
 function fetchGraphQL(
-    operationsDoc: string,
-    operationName: string,
-    variables: Record<string, any>
+  operationsDoc: string,
+  operationName: string,
+  variables: Record<string, any>
 ) {
-    return fetch(config.graphqlEndpoint, {
-        method: 'POST',
-        body: JSON.stringify({
-            query: operationsDoc,
-            variables,
-            operationName,
-        }),
-    }).then(result => result.json());
+  return fetch(config.graphqlEndpoint, {
+    method: 'POST',
+    body: JSON.stringify({
+      query: operationsDoc,
+      variables,
+      operationName,
+    }),
+    headers: {
+      "content-type": "application/json",
+      "x-hasura-admin-secret": config.graphqlSecret
+    }
+  }).then(result => result.json());
 }
 
 const operation = `
@@ -33,7 +37,7 @@ const operation = `
 
 export class GraphqlService {
 
-    public getUser(handle: string) {
-        return fetchGraphQL(operation, "GetUser", { "handle": handle });
-    }
+  public getUser(handle: string) {
+    return fetchGraphQL(operation, "GetUser", { "handle": handle });
+  }
 }

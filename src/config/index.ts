@@ -20,4 +20,5 @@ export const config = {
     rateLimitMax: process.env.RATE_LIMIT_MAX || 10000,
     // GRAPHQL
     graphqlEndpoint: process.env.GRAPHQL_ENDPOINT || "https://graphqlendpoint.com/v1/graphql",
+    graphqlSecret: process.env.GRAPHQL_SECRET || "secret",
 };
