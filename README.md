@@ -17,9 +17,9 @@ http://localhost:8000/user/CuteWisp
 ## API Reference
 
 ### GET /user/:{userid}
-base-url is `https://api.cutewisp.com/atcoder`
+base-url is `https://atcoder-api.herokuapp.com`
 ```
-https://api.cutewisp.com/atcoder/user/CuteWisp
+https://atcoder-api.herokuapp.com/user/CuteWisp
 ```
 
 ```json
