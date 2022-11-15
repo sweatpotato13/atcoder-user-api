@@ -1,5 +1,5 @@
 import { config } from "@config";
-import fetch from "node-fetch"
+import fetch from "cross-fetch"
 
 function fetchGraphQL(
   operationsDoc: string,
