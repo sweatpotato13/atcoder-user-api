@@ -17,7 +17,7 @@ export const config = {
     // Server
     host: process.env.HOST || "0.0.0.0",
     port: parseInt(process.env.PORT) || 8000,
-    rateLimitMax: process.env.RATE_LIMIT_MAX || 10000,
+    rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX) || 10000,
     // GRAPHQL
     graphqlEndpoint: process.env.GRAPHQL_ENDPOINT || "https://graphqlendpoint.com/v1/graphql",
     graphqlSecret: process.env.GRAPHQL_SECRET || "secret",

@@ -14,7 +14,7 @@ export class GetUserHandler implements IQueryHandler<GetUserQuery> {
     async execute(command: GetUserQuery): Promise<any> {
         const { data } = command;
         try {
-            const result = await this.graphqlService.getUser(data);
+            const result: any = await this.graphqlService.getUser(data);
             if (!result) {
                 throw "User doesn't exist";
             }
