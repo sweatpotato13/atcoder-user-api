@@ -4,7 +4,7 @@ FROM node:14.17.1-alpine3.13 as builder
 ENV NODE_ENV build
 WORKDIR /app
 COPY . /app
-RUN yarn \
+RUN yarn install --production --frozen-lockfile \
     && yarn build
 
 ### BASE
